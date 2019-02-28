@@ -1,0 +1,59 @@
+IDEA操作流程：
+
+1. 启动ThirdServer
+2. 启动SecondServer
+3. 启动FirstClient
+
+
+------------------------------------------
+
+
+命令行操作流程：首先maven打包，然后进行以下操作
+
+1.
+λ java -jar third-server.jar
+class com.me.socket.server.ThirdServer 启动正在监听： /0:0:0:0:0:0:0:0:8883
+--------------------server: channel log begin--------------------
+报告
+信息：有一客户端链接到本服务端
+IP:www.xmind.net
+Port:52583
+报告完毕
+/127.0.0.1:8883 通道已激活！
+third-server收到second-server发送的数据:{name='当前位置second', id=888, list=[111, 222, 333, 444]} | second msg
+服务端接收数据完毕..
+/127.0.0.1:8883 通道不活跃！
+--------------------server: channel log end--------------------
+
+2.
+λ java -jar second-server.jar
+class com.me.socket.server.SecondServer 启动正在监听： /0:0:0:0:0:0:0:0:8882
+--------------------server: channel log begin--------------------
+报告
+信息：有一客户端链接到本服务端
+IP:www.xmind.net
+Port:52558
+报告完毕
+/127.0.0.1:8882 通道已激活！
+second-server收到first-server发送的数据:{name='xyz', id=999, list=[111, 222, 333]}
+服务端接收数据完毕..
+--------------------client: channel log begin--------------------
+正在连接中...
+服务端连接成功...
+客户端与服务端通道-开启：/127.0.0.1:52583channelActive
+连接已关闭..
+客户端与服务端通道-关闭：/127.0.0.1:52583channelInactive
+--------------------client: channel log end--------------------
+/127.0.0.1:8882 通道不活跃！
+--------------------server: channel log end--------------------
+
+3.
+λ java -jar first-server.jar
+--------------------client: channel log begin--------------------
+正在连接中...
+服务端连接成功...
+客户端与服务端通道-开启：/127.0.0.1:52558channelActive
+连接已关闭..
+客户端与服务端通道-关闭：/127.0.0.1:52558channelInactive
+--------------------client: channel log end--------------------
+=========================

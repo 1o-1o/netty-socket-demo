@@ -57,3 +57,10 @@ second-server收到first-server发送的数据:{name='xyz', id=999, list=[111, 2
 客户端与服务端通道-关闭：/127.0.0.1:52558channelInactive
 --------------------client: channel log end--------------------
 =========================
+
+
+
+
+
+
+just a test, never mind.
